@@ -17,11 +17,9 @@ export default class SuggestionList extends Component {
 
     return (
       <Layout title="Recomendado para ti">
-        <FlatList
-          data={list}
-          renderItem={({ item }) => <Text>{item.title}</Text>}
-        />
+        <FlatList data={list} renderItem={this._renderItem} />
       </Layout>
     );
   }
+  _renderItem = ({ item }) => <Text>{item.title}</Text>;
 }
