@@ -1,75 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ImageBackground
-} from "react-native";
+import { Text } from "react-native";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
-
+import Home from "./src/screens/containers/home";
+import Header from "./src/sections/components/header";
+import SuggestionList from "./src/videos/containers/suggestion-list";
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <ImageBackground
-        source={require("./src/assets/background.png")}
-        style={styles.main}
-      >
-        <View style={styles.container}>
-          <Image
-            source={require("./src/assets/logo.png")}
-            style={styles.image}
-          />
-          <Text style={styles.welcome}>Welcome to React Native!</Text>
-          <Text style={styles.instructions}>To get started, edit App.js</Text>
-          <Text style={styles.instructions}>{instructions}</Text>
-        </View>
-      </ImageBackground>
+      <Home>
+        <Header/>
+        <Text>Buscador</Text>
+        <Text>Categorias</Text>
+        <SuggestionList/>
+      </Home>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 5,
-    justifyContent: "center",
-    alignItems: "center"
-    //backgroundColor: "transparent"
-  },
-  main: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "100%"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  },
-  image: {
-    width: 200,
-    height: 60
-  }
-});
