@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 import { FlatList, Text } from "react-native";
 import Layout from "../components/suggestion-list-layout";
+import Empty from "../components/empty";
+import Separator from "../components/vertical-separator";
+import Suggestion from "../components/suggestion";
 
-export default class SuggestionList extends Component {
+class SuggestionList extends Component {
   render() {
-    const list = [
-      {
-        title: "Alberto",
-        key: "1"
-      },
-      {
-        title: "Alfredo",
-        key: "2"
-      }
-    ];
-
     return (
       <Layout title="Recomendado para ti">
-        <FlatList data={list} renderItem={this._renderItem} />
+        <FlatList
+          keyExtractor={this._keyExtractor}
+          data={this.props.list}
+          ListEmptyComponent={this._renderEmpty}
+          renderItem={this._renderItem}
+          ItemSeparatorComponent={this._itemSeparator}
+        />
       </Layout>
     );
   }
-  _renderItem = ({ item }) => <Text>{item.title}</Text>;
+
+  //_renderItem = ({ item }) => <Text>{item.title}</Text>;
+  _keyExtractor = item => item.id.toString();
+  _renderEmpty = () => <Empty msg=" No hay elementos para mostrarse" />;
+  _itemSeparator = () => <Separator />;
+  _renderItem = ({ item }) => {
+    return <Suggestion {...item} />;
+  };
 }
+export default SuggestionList;
