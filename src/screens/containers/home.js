@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Text } from "react-native";
+import { Component } from "react";
 
 class Home extends Component {
   render() {
